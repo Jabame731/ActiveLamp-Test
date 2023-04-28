@@ -57,6 +57,7 @@ export const generateLongUrlFromShortUrl = (req, res) => {
     const longUrl = data[0].long_url;
 
     return res.status(200).json({
+      message: 'Original URL found',
       data: longUrl,
     });
   });
