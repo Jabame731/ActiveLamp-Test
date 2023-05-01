@@ -1,30 +1,4 @@
-// import { createReducer, on } from '@ngrx/store';
-// import {
-//   generateShortUrlSuccess,
-//   inflateUrlSuccess,
-// } from './ur-shortening.action';
-// import { UrlShortener } from '../models/url-shortening.model';
-
-// export interface UrlShortenerState {
-//   shortUrl: string;
-//   longUrl: string;
-// }
-
-// export const initialState: UrlShortenerState = {
-//   shortUrl: '',
-//   longUrl: '',
-// };
-
-// export const urlShortenerReducer = createReducer(
-//   initialState,
-//   on(generateShortUrlSuccess, (state, { shortUrl }) => ({
-//     ...state,
-//     shortUrl,
-//   })),
-//   on(inflateUrlSuccess, (state, { longUrl }) => ({ ...state, longUrl }))
-// );
-
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import {
   shortenUrlSuccess,
   shortenUrlFailure,
