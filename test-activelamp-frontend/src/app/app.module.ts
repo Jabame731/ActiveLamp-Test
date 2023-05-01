@@ -6,21 +6,26 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { UrlComponent } from './url/url.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UrlShorteningComponent } from './url-shortening/url-shortening.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { UrlShortenerEffects } from './store/url-shortening.effect';
+import { urlShortenerReducer } from './store/url-shortening.reducer';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UrlComponent
-  ],
+  declarations: [AppComponent, UrlShorteningComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    StoreModule.forRoot({ urlShortenerReducer }),
+    EffectsModule.forRoot([UrlShortenerEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,26 @@
+<p>url-shortening works!</p>
+
+<h2>Data Form</h2>
+
+<div>
+  <label for="original-url">Original URL:</label>
+  <input type="text" [(ngModel)]="originalUrl" id="original-url" />
+  <button (click)="onShortenUrl()">Shorten</button>
+</div>
+
+<div *ngIf="shortUrl$ | async as shortUrl">
+  <p>URL:</p>
+  <p>{{ shortUrl }}</p>
+</div>
+
+<div>
+  <label for="short-code">Short Code: </label>
+  <span>shorten.com/</span>
+  <input type="text" [(ngModel)]="shortCode" id="short-code" />
+  <button (click)="onGetOriginalUrl()">Get Original URL</button>
+</div>
+<div *ngIf="originalUrl$ | async as originalUrl">
+  <p>Original URL:</p>
+  <p>{{ originalUrl }}</p>
+</div>
+<div *ngIf="error$ | async as error">{{ error }}</div>
