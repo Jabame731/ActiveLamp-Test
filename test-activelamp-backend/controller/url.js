@@ -27,11 +27,13 @@ export const generateShortUrl = (req, res) => {
 
           return res.status(200).json({
             message: 'URL has been shortened',
+            long_url: originalURL,
+            short_url: generateUniqueCharacters,
           });
         }
       );
     } else {
-      return res.status(401).json({
+      return res.status(400).json({
         message: 'URL is not Valid',
       });
     }
@@ -58,7 +60,7 @@ export const generateLongUrlFromShortUrl = (req, res) => {
 
     return res.status(200).json({
       message: 'Original URL found',
-      data: longUrl,
+      originalUrl: longUrl,
     });
   });
 };
